@@ -1,0 +1,6 @@
+.select2-container--open {
+    z-index:99999;
+}
+.btn-full-width{
+    width: 100%;
+}

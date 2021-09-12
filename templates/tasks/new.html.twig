@@ -1,0 +1,15 @@
+{% extends "templateBase.html.twig" %}
+
+{% block body %}
+    <h1>{{ 'new_task'|trans }}</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+    <input type="submit" class="btn btn-success float-right" value="{{ 'save'|trans }}" />
+    {{ form_end(form) }}
+
+
+
+{% endblock %}
+

@@ -1,0 +1,20 @@
+{% extends "templateBase.html.twig" %}
+
+{% block body %}
+    <h1>{{ 'report'|trans }}</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+    <div class="btn-group  float-right" role="group">
+        <input type="submit" class="btn btn-success" name="type" value="{{ 'pdf'|trans }}">
+        <input type="submit" class="btn btn-success" name="type" value="{{ 'excel'|trans }}">
+        <input type="submit" class="btn btn-success" name="type" value="{{ 'csv'|trans }}">
+    </div>
+
+    {{ form_end(form) }}
+
+
+
+{% endblock %}
+

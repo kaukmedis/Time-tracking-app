@@ -1,0 +1,60 @@
+{% extends 'templateBase.html.twig' %}
+
+{% block title %}Platintojas index{% endblock %}
+
+{% block body %}
+<!-- Page Heading -->
+{#<h1 class="h3 mb-2 text-gray-800">{{ 'instruktazas_index'|trans }}</h1>#}
+{#<p class="mb-4">{{ 'instruktazas_index_explain'|trans }}#}
+{#</p>#}
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h4 class="m-0 font-weight-bold text-primary float-left">{{ 'tasks_index'|trans }}</h4>
+    </div>
+    <div class="card-body">
+        <table class="table" id="tasks">
+            <thead>
+            <tr>
+                <th>{{ 'title'|trans }}</th>
+                <th>{{ 'comment'|trans }}</th>
+                <th>{{ 'date'|trans }}</th>
+                <th>{{ 'time_spent'|trans }}</th>
+                {#<th>{{ 'action'|trans }}</th>#}
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <a class="btn btn-secondary" type="button" href="{{ path('tasks_new') }}" >{{ 'new_task'|trans }}</a>
+    </div>
+</div>
+
+    <script>
+        var rangovaiTable;
+
+        $( document ).ready(function() {
+            var dataTableConfigLocal = clone( dataTableConfig);
+            dataTableConfigLocal['ajax']='{{ path('tasks_data') }}';
+            dataTableConfigLocal['aoColumns']=[
+                {"data":"title"},
+                {"data":"comment"},
+                {"data":function (row, type, val, meta) {
+
+                                if (row.date) {
+                                    let date = new Date(row.date.timestamp*1000);
+                                    return date.toLocaleDateString("lt-LT");
+                                }
+
+                                return '';
+
+                            }},
+                {"data":"timeSpent"},
+            ];
+            $('#tasks').dataTable(dataTableConfigLocal);
+
+        });
+    </script>
+{% endblock %}
