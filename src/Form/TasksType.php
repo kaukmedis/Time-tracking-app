@@ -17,20 +17,23 @@ class TasksType extends AbstractType
     {
         $builder
             ->add('title',TextType::class,[
-                'required' => true
+                'required' => true,
+                'label' => 'title'
             ])
             ->add('comment',TextareaType::class,[
-                'required' => true
+                'required' => true,
+                'label' => 'comment'
             ])
             ->add('date',DateType::class,[
                 'widget' => 'single_text','attr'   => ['max' => '9999-12-01'],
                 'format' => 'yyyy-MM-dd',
-                'required'  => true
-                    ]
-            )
+                'required'  => true,
+                'label' => 'date'
+            ])
             ->add('timeSpent',IntegerType::class,[
                 'attr'=>['min'=>1],
-                'required'=>true
+                'required'=>true,
+                'label' => 'time_spent'
             ])
         ;
     }

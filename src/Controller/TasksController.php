@@ -86,12 +86,14 @@ class TasksController extends AbstractController
             ->add('from', DateType::class,[
                 'widget' => 'single_text','attr'   => ['max' => '9999-12-01'],
                 'format' => 'yyyy-MM-dd',
-                'required'  => true
+                'required'  => true,
+                'label' => 'from'
             ])
             ->add('to', DateType::class,[
                 'widget' => 'single_text','attr'   => ['max' => '9999-12-01'],
                 'format' => 'yyyy-MM-dd',
-                'required'  => true
+                'required'  => true,
+                'label' => 'to'
             ])
             ->getForm();
         $form->handleRequest($request);

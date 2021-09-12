@@ -5,6 +5,7 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 
+use Dompdf\Options;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -68,7 +69,9 @@ class TasksReport
     }
 
     public function pdfReport($from, $to){
-        $dompdf = new Dompdf();
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'DejaVuSans');
+        $dompdf = new Dompdf($pdfOptions);
         $tasksData = $this->tasksReportData($from,$to);
         $html = $this->twig->render('pdfTemplates/tasksReport.html.twig', [
             'tasksData' => $tasksData
